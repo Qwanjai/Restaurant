@@ -5,10 +5,7 @@
  */
 package restaurant.person;
 
-/**
- *
- * @author rewbuglag
- */
+
  public enum  AccountStatus {
 ACTIVE,
 INACTIVE,

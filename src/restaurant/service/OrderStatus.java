@@ -5,10 +5,6 @@
  */
 package restaurant.service;
 
-/**
- *
- * @author rewbuglag
- */
 public  enum  OrderStatus {
     ORDERING,
     ORDERED,

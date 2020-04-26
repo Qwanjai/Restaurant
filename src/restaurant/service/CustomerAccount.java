@@ -10,10 +10,7 @@ import restaurant.location.Location;
 import restaurant.person.AccountStatus;
 import restaurant.person.Person;
 
-/**
- *
- * @author rewbuglag
- */
+
 public class CustomerAccount {
 
     private Location myLocation;

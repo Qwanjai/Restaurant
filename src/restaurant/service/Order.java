@@ -5,10 +5,7 @@
  */
 package restaurant.service;
 
-/**
- *
- * @author rewbuglag
- */
+
 public class Order {
     
 }

@@ -7,10 +7,7 @@ package restaurant.person;
 
 import java.util.Objects;
 
-/**
- *
- * @author rewbuglag
- */
+
 public class Person {
     private String name;
     private String phone;

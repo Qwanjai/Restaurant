@@ -5,10 +5,7 @@
  */
 package restaurant.policy;
 
-/**
- *
- * @author rewbuglag
- */
+
 public interface PolicyOrdering {
 public static final int FEE_PER_KILOMETER = 10;
 public  static final int MAX_ORDER_PER_CUSTOMER = 5;

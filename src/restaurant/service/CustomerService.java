@@ -7,10 +7,7 @@ package restaurant.service;
 
 import restaurant.menu.Menu;
 
-/**
- *
- * @author rewbuglag
- */
+
 public interface CustomerService {
 
     public boolean addItemIntoBasket(CustomerAccount customer, int foodId);

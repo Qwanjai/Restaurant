@@ -5,10 +5,7 @@
  */
 package restaurant.location;
 
-/**
- *
- * @author rewbuglag
- */
+
 public class Location {
     private String address;
     private  float latitude  ;

@@ -7,10 +7,7 @@ package restaurant.menu;
 
 import java.util.Objects;
 
-/**
- *
- * @author rewbuglag
- */
+
 public class Menu {
     private int foodId;
     private String foodName;

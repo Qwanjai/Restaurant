@@ -5,10 +5,7 @@
  */
 package restaurant.service;
 
-/**
- *
- * @author rewbuglag
- */
+
 public interface RestaurantService {
     public void sendToDelivery();
     public int findForWhoseOrder(CustomerAccount customer);

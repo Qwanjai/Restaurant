@@ -7,8 +7,9 @@ package restaurant.service;
 
 
 public interface RestaurantService {
-    public void sendToDelivery();
-    public int findForWhoseOrder(CustomerAccount customer);
+  //  public void sendOrderToCustomer(Order order);
+   // public int findForWhoseOrder(CustomerAccount customer);
+   // public int findForFoodId(int foodId);
     
     
 }

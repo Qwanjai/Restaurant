@@ -7,7 +7,6 @@ package restaurant.service;
 
 public  enum  OrderStatus {
     ORDERING,
-    ORDERED,
     FAILED,
     FINISHED
 }

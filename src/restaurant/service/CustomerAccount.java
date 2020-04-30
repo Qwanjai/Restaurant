@@ -18,6 +18,7 @@ public class CustomerAccount {
     private Person person;
 
     public CustomerAccount(Location myLocation, AccountStatus status, Person person) {
+    
         this.myLocation = myLocation;
         this.status = status;
         this.person = person;

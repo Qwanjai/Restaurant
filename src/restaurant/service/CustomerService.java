@@ -5,18 +5,18 @@
  */
 package restaurant.service;
 
-import restaurant.menu.Menu;
+import restaurant.menu.Food;
 
 
 public interface CustomerService {
 
     public boolean addItemIntoBasket(CustomerAccount customer, int foodId);
 
-    public boolean delItemIntoBasket(CustomerAccount customer, int foodId);
+    public boolean delItemFromBasket(CustomerAccount customer, int foodId);
 
-    public Menu[] getMyOrderList(CustomerAccount customer);
+    public Food[] getMyOrderList(CustomerAccount customer);
 
-    public Order getMyBill(CustomerAccount customer);
+    public void getMyBill(CustomerAccount customer);
 
     public void checkoutItem(CustomerAccount customer);
 

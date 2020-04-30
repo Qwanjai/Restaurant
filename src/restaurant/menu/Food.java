@@ -8,15 +8,27 @@ package restaurant.menu;
 import java.util.Objects;
 
 
-public class Menu {
+public class Food {
     private int foodId;
     private String foodName;
     private int price;
 
-    public Menu(int foodId, String foodName, int price) {
+    public Food(int foodId, String foodName, int price) {
         this.foodId = foodId;
         this.foodName = foodName;
         this.price = price;
+    }
+
+    public int getFoodId() {
+        return foodId;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getFoodName() {
+        return foodName;
     }
 
    
@@ -31,17 +43,19 @@ public class Menu {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Menu other = (Menu) obj;
+        final Food other = (Food) obj;
         if (this.foodId != other.foodId) {
-            return false;
-        }
-        if (this.price != other.price) {
             return false;
         }
         if (!Objects.equals(this.foodName, other.foodName)) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Food{" + "foodId=" + foodId + ", foodName=" + foodName + ", price=" + price + '}';
     }
     
 }

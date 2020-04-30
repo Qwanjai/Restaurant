@@ -8,10 +8,10 @@ package restaurant.location;
 
 public class Location {
     private String address;
-    private  float latitude  ;
-    private float longitude ;
+    private double latitude  ;
+    private double longitude ;
 
-    public Location(String address, float latitude, float longitude) {
+    public Location(String address, double latitude, double longitude) {
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -21,5 +21,13 @@ public class Location {
         this.latitude = 0;
         this.longitude = 0;
       }     
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
       
 }

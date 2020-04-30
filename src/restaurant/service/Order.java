@@ -25,7 +25,9 @@ public class Order {
     private int foodFee;
     private int deliveryFee;
 
-    public Order() {
+    public Order(CustomerAccount customer) {
+        this.resLocate = Restaurant.resLc;
+        this.customer = customer;
         this.orderlist = new Food[PolicyOrdering.MAX_ORDER_PER_CUSTOMER];
 
     }
@@ -44,17 +46,19 @@ public class Order {
     public boolean delItemFromBasket(Food food) {
         int orderIndex = findForOrderList(food);
         if (orderIndex > -1) {
-            return false;
-        }
-        for (int i = orderIndex; i < orderlist.length; i++) {
-            try {
-                orderlist[i] = orderlist[i + 1];
-            } catch (IndexOutOfBoundsException ex) {
-                orderlist[i] = null;
+            for (int i = orderIndex; i < foodCounter; i++) {
+                try {
+                    orderlist[i] = orderlist[i + 1];
+                } catch (IndexOutOfBoundsException ex) {
+                    orderlist[i] = null;
+                }
             }
+            foodCounter--;
+            status = OrderStatus.ORDERING;
+            return true;
         }
-        status = OrderStatus.ORDERING;
-        return true;
+
+        return false;
     }
 
     public int findForOrderList(Food food) {
@@ -67,7 +71,7 @@ public class Order {
     }
 
     public void checkoutItem() {
-        for (int i = 0; i < orderlist.length; i++) {
+        for (int i = 0; i < foodCounter; i++) {
             foodFee += orderlist[i].getPrice();
         }
         deliveryFee = distanceTo(resLocate, customer) * PolicyOrdering.FEE_PER_KILOMETER;
@@ -80,8 +84,12 @@ public class Order {
         return customer;
     }
 
-    public Food[] getOrderList() {
-        return orderlist;
+    public void getOrderList() {
+        for (int i = 0; i < foodCounter; i++) {
+            System.out.println(orderlist[i]);
+//            Food food = orderlist[i];
+
+        }
     }
 
     public OrderStatus getOrderStatus() {

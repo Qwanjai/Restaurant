@@ -18,7 +18,7 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
 
     private String restaurantName;
     private Food foodMenu[];
-    private Location resLc;
+    public static Location resLc;
     private Order order[];
     private CustomerAccount customers[];
 //    public Comparator<Location> locationComparator;
@@ -26,13 +26,23 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
     private int orderCounter = 0;
     private int customerCounter;
 
-    public Restaurant(String restaurantName, Location resLc, int maxCustomer) {
+    public Restaurant(String restaurantName, Location resLc) {
         this.restaurantName = restaurantName;
         this.resLc = resLc;
         foodMenu = new Food[NUMBER_OF_FOODMENU];
-        customers = new CustomerAccount[maxCustomer];
+        order = new Order[5];
+       // customers = new CustomerAccount[maxCustomer];
 
     }
+    public void addFoodMenu(Food[] food){
+        for (int i = 0; i < food.length; i++) {
+            foodMenu[i]=food[i];
+        }
+        if (foodMenu==null) {
+            System.out.println("false");
+        }
+    }
+    
 
 //    @Override
 //    public void sendOrderToCustomer(Order order) {
@@ -46,15 +56,19 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
     @Override
     public boolean addItemIntoBasket(CustomerAccount customer, int foodId) {
         int foodIndex = findForFoodId(foodId);
+      System.out.println(foodIndex);
         int orderIndex = findForWhoseOrder(customer);
+       System.out.println(orderIndex);
         if (foodIndex > -1) {
             if (orderIndex > -1) {
                 order[orderIndex].addItemIntoBasket(foodMenu[foodIndex]);
                 System.out.println("Add item success");
                 return true;
             } else {
-                order[orderCounter++] = new Order();
-                order[orderCounter - 1].addItemIntoBasket(foodMenu[foodIndex]);
+                order[orderCounter++] = new Order(customer);
+                order[orderCounter-1].addItemIntoBasket(foodMenu[foodIndex]);
+                System.out.println("Add item success");
+                return true;
             }
         }
         return false;
@@ -66,7 +80,8 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
         int orderIndex = findForWhoseOrder(customer);
         if (foodIndex > -1) {
             if (orderIndex > -1) {
-                order[orderIndex].delItemFromBasket(foodMenu[foodIndex]);
+                System.out.println(order[orderIndex].delItemFromBasket(foodMenu[foodIndex]));
+//                order[orderIndex].delItemFromBasket(foodMenu[foodIndex]);
                 System.out.println("Delete success");
                 return true;
             }
@@ -87,33 +102,37 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
     }
 
     @Override
-    public Food[] getMyOrderList(CustomerAccount customer) {
+    public boolean getMyOrderList(CustomerAccount customer) {
         int orderIndex = findForWhoseOrder(customer);
+//        System.out.println(orderIndex);
         if (orderIndex > -1) {
-            return order[orderIndex].getOrderList();
+            order[orderIndex].getOrderList();
+            return true;
         }
-        return null;
+        return false;
     }
 
     @Override
     public void   getMyBill(CustomerAccount customer) {
         int orderIndex = findForWhoseOrder(customer); 
+        StringBuilder sb2 = new StringBuilder();
         StringBuilder sb = new StringBuilder();
         if (orderIndex > -1) { 
-            sb.append(customer.getMyProfile().getName());
-            sb.append("\n");    
-            sb.append(order[orderIndex].getOrderList());
-            sb.append("\n");
-            sb.append("Yout total fee :");
+            sb2.append(customer.getMyProfile().getName()); 
+            System.out.println(sb2);
+            order[orderIndex].getOrderList();
+//            sb.append(order[orderIndex].getOrderList());
+            sb.append("Yout total fee:");
             sb.append(order[orderIndex].getTotalFee());
-            sb.append(" ,Food fee : ");
+            sb.append(" ,Food fee: ");
             sb.append(order[orderIndex].getFoodFee());
-             sb.append(" ,Delivery  fee : ");
+             sb.append(" ,Delivery  fee: ");
              sb.append(order[orderIndex].getDeliveryFee());
             sb.append("\n");
             sb.append("Thank you, have a nice day");
             System.out.println(sb);
-        }else{
+        }
+        else{
             System.out.println("You don't have any order to be found  ");
         }
 
@@ -122,18 +141,24 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
     private int findForFoodId(int foodId) {
         int foodIdIndex = -1;
         for (int i = 0; i < foodMenu.length; i++) {
-            if (foodMenu[i].getFoodId() == foodId) {
-                return foodIdIndex = i;
-
+            if (foodMenu[i] != null) {
+                if (foodMenu[i].getFoodId() == foodId) {
+                    return foodIdIndex = i;
+                }
             }
+            
         }
         return foodIdIndex;
     }
 
     private int findForWhoseOrder(CustomerAccount customer) {
-        for (int i = 0; i < order.length; i++) {
-            if (customer.getMyProfile().getName().equals(order[i].getCustomer().getMyProfile().getName())) {
-                return i;
+        if (customer != null && customer.getMyProfile() != null) {
+            for (int i = 0; i < orderCounter; i++) {
+                if (order[i] != null && order[i].getCustomer().getMyProfile() != null) {
+                    if (customer.getMyProfile().getName().equals(order[i].getCustomer().getMyProfile().getName())) {
+                        return i;
+                    }
+                }
             }
         }
         return -1;

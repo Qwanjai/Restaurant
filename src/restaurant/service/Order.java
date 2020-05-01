@@ -34,6 +34,7 @@ public class Order {
 
     public boolean addItemIntoBasket(Food food) {
         if (foodCounter == PolicyOrdering.MAX_ORDER_PER_CUSTOMER) {
+            
             return false;
         }
 
@@ -87,9 +88,10 @@ public class Order {
     public void getOrderList() {
         for (int i = 0; i < foodCounter; i++) {
             System.out.println(orderlist[i]);
-//            Food food = orderlist[i];
-
+            foodFee += orderlist[i].getPrice();
         }
+        status=OrderStatus.ORDERING;
+        
     }
 
     public OrderStatus getOrderStatus() {

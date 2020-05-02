@@ -47,9 +47,7 @@ public class Food {
         if (this.foodId != other.foodId) {
             return false;
         }
-        if (!Objects.equals(this.foodName, other.foodName)) {
-            return false;
-        }
+
         return true;
     }
 

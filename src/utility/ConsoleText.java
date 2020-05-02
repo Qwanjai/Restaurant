@@ -5,12 +5,13 @@
  */
 package utility;
 
-/**
- *
- * @author rewbuglag
- */
 
-    public class ConsoleColors {
+
+    public class ConsoleText {
+        
+        public static final String tab = "%-20s %5d";
+        
+        
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
 

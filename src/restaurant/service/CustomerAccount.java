@@ -16,19 +16,25 @@ public class CustomerAccount {
     private Location myLocation;
     private AccountStatus status;
     private Person person;
+    public int  cusId;
 
     public CustomerAccount(Location myLocation, AccountStatus status, Person person) {
     
         this.myLocation = myLocation;
         this.status = status;
         this.person = person;
+        this.cusId=generateCusId();
+    }
+  
+    
+    
+      private int generateCusId(){
+        String id;
+        id = "100"+String.valueOf(Person.getCountPerson());
+        return Integer.parseInt(id);
+       
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -45,9 +51,6 @@ public class CustomerAccount {
         if (!Objects.equals(this.myLocation, other.myLocation)) {
             return false;
         }
-        if (this.status != other.status) {
-            return false;
-        }
         if (!Objects.equals(this.person, other.person)) {
             return false;
         }
@@ -60,6 +63,12 @@ public class CustomerAccount {
 
     public Location getMyLocation() {
         return myLocation;
+    }
+
+    @Override
+    public String toString() {
+
+        return "myLocation=" + myLocation + ", status=" + status + ", person=" + person + cusId;
     }
 
 }

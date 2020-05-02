@@ -15,7 +15,7 @@ import restaurant.service.Restaurant;
 
 public class Order {
 
-    private LocalDateTime orderDate;
+//    private LocalDateTime orderDate;
     private Food orderlist[];
     private CustomerAccount customer;
     private OrderStatus status;

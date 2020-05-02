@@ -64,25 +64,25 @@ public class Restaurantservice {
         rs.addFoodMenu(foodList);
 
         System.out.println("---------------------");
-//        Person r1 = new Person("Jennie", "0857891025");
-//        Location ct_l = new Location("cosmo mansion", 12.651444, 120.498361);
-//        CustomerAccount ct1 = new CustomerAccount(ct_l, AccountStatus.ACTIVE, r1);
-//        System.out.println(ct1.getMyProfile());
-//        rs.addItemIntoBasket(ct1, 219);
-//        rs.addItemIntoBasket(ct1, 310);
-//        rs.addItemIntoBasket(ct1, 108);
-//        rs.addItemIntoBasket(ct1, 110);
-//        rs.addItemIntoBasket(ct1, 207);
+        Person r1 = new Person("Jennie", "0857891025");
+        Location ct_l = new Location("cosmo mansion", 12.651444, 120.498361);
+        CustomerAccount ct1 = new CustomerAccount(ct_l, AccountStatus.ACTIVE, r1);
+        System.out.println(ct1.getMyProfile());
+        rs.addItemIntoBasket(ct1, 219);
+        rs.addItemIntoBasket(ct1, 310);
+        rs.addItemIntoBasket(ct1, 108);
+        rs.addItemIntoBasket(ct1, 110);
+        rs.addItemIntoBasket(ct1, 207);
 //        rs.getMyOrderList(ct1);
-//        rs.addItemIntoBasket(ct1, 218);
-//        rs.addItemIntoBasket(ct1, 219);
-//        rs.addItemIntoBasket(ct1, 310);
-//        rs.addItemIntoBasket(ct1, 108);
-//        rs.addItemIntoBasket(ct1, 110);
+        rs.addItemIntoBasket(ct1, 218);
+        rs.addItemIntoBasket(ct1, 219);
+        rs.addItemIntoBasket(ct1, 310);
+        rs.addItemIntoBasket(ct1, 108);
+        rs.addItemIntoBasket(ct1, 110);
 
 //        rs.getMyOrderList(ct1);
-        reService.welcomeMenu();
-//        rs.checkoutItem(ct1);
+//        reService.welcomeMenu();
+        rs.checkoutItem(ct1);
 //        rs.getMyBill(ct1);
 
 //        rs.checkoutItem(ct1);

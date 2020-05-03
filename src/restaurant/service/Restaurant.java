@@ -18,9 +18,9 @@ import restaurant.policy.PolicyOrdering;
 import restaurant.service.CustomerAccount;
 import restaurant.service.CustomerService;
 import restaurant.service.Order;
-import restaurant.service.RestaurantService;
 
-public class Restaurant implements RestaurantService, CustomerService, PolicyOrdering {
+
+public class Restaurant implements CustomerService, PolicyOrdering {
 
     private String restaurantName;
    public  Food[] foodmenu;
@@ -137,7 +137,7 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
         if (orderIndex > -1) {
             order[orderIndex].checkoutItem();
             System.out.println("your current fee now  is : "+order[orderIndex].getTotalFee() +" baht");
-            System.out.println("----------------------");
+//            System.out.println("----------------------");
 
         }
 
@@ -171,9 +171,9 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
 //            sb.append(order[orderIndex].getOrderList());
             sb.append("Yout total fee:");
             sb.append(order[orderIndex].getTotalFee());
-            sb.append(",Food fee: ");
+            sb.append("   ,Food fee: ");
             sb.append(order[orderIndex].getFoodFee());
-            sb.append(",Delivery  fee: ");
+            sb.append(", Delivery fee: ");
             sb.append(order[orderIndex].getDeliveryFee());
             sb.append("\n");
             sb.append("Thank you, have a nice day");

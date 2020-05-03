@@ -25,12 +25,12 @@ import utility.ConsoleText;
 public class Restaurantservice {
     
     Scanner sc = new Scanner(System.in);
-    private Location resLocation;
+    private Location resLocation;   
+    private  Restaurant rs;
     private static int personCounter;
-    public Restaurantservice[] rsService;
-    public int dataCounter;
-    public Restaurant rs;
-    private CustomerAccount[] c;
+    public int cusCounter;
+
+    public  CustomerAccount[] c;
     private Order o_c;
     private int cusIndex;
     
@@ -44,10 +44,11 @@ public class Restaurantservice {
             str.append(ConsoleText.BLACK + "-------------------------------------------------" + '\n');
             str.append( "Have you ever registed in this restaurant ?");
 //            str.append(ConsoleText.BLUE + " yes " + ConsoleText.BLACK + "or" + ConsoleText.RED + " no ");
-            str.append(ConsoleText.BLACK + "     type 0 to exit");
+            
             str.append('\n');
-            str.append('\n'  + ConsoleText.BLUE + " yes " + ConsoleText.BLACK + "if you registed");
-            str.append("     |     " + ConsoleText.RED + " no " + ConsoleText.BLACK + "if you didn't registed");
+            str.append("》"+ ConsoleText.GREEN + " yes " + ConsoleText.BLACK + "if you registed        (sign in with id)");
+            str.append("\n"+"》" + ConsoleText.BLUE+ " no " + ConsoleText.BLACK + "if you didn't registed   (sign up now)");
+            str.append("\n"+"》"+ConsoleText.RED + " type 0 to exit");
             System.out.println(str);
             textInput = sc.nextLine();
             switch (textInput) {
@@ -85,11 +86,11 @@ public class Restaurantservice {
         longtitude = sc.nextDouble();
         sc.nextLine();
         Location r_p1 = new Location(address, latitude, longtitude);
-        dataCounter++;
+        cusCounter++;
         for (int i = 1; i < c.length; i++) {
             c[i] = new CustomerAccount(r_p1, p1);
         }
-        System.out.println(c[dataCounter].toString() + "  Customer id is : " + ConsoleText.BLUE + c[dataCounter].getCusId());
+        System.out.println(c[cusCounter].toString() + "  Customer id is : " + ConsoleText.BLUE + c[cusCounter].getCusId());
 //        System.out.print(ConsoleText.BLUE + c[dataCounter].getCusId());
 
 //         orderFood();
@@ -97,7 +98,7 @@ public class Restaurantservice {
     
     private boolean signIn() {
         int id;
-        System.out.println("|----------------- Sing in menu -----------------|");
+        System.out.println("|-----------------"+ConsoleText.BLUE+" Sign in menu"+ConsoleText.BLACK+" -----------------|");
         System.out.print("Enter your customer id :");
         id = sc.nextInt();
         sc.nextLine();
@@ -111,9 +112,10 @@ public class Restaurantservice {
     }
     
     private void orderFood() {
+        System.out.println("Hello "+c[cusIndex].getMyProfile().getName());
         int menuId;
         do {
-             System.out.println("|----------------- Order  menu -----------------|");
+             System.out.println("|-----------------"+ConsoleText.RED+" Order  menu"+ConsoleText.BLACK+" -----------------|");
         System.out.println("(1) Show food menu ");
         System.out.println("(2) Add food to basket ");
         System.out.println("(3) Delete food from basket ");
@@ -156,7 +158,7 @@ public class Restaurantservice {
     private void showFoodMenu() {
         int menu;
         System.out.println(" (1) Drinks " + " (2) Main dish " + " (3) Dessert ");
-        System.out.println("Enter (1-3) to see the menu : ");
+        System.out.print("Enter (1-3) to see the menu : ");
         menu = sc.nextInt();
         rs.showFoodMenu(menu);
         System.out.println("----------------------------------------------------");

@@ -31,10 +31,12 @@ public class DatabaseInitialization {
     private static void createTables() {
         try (Connection conn = DBConnection.getConnection();
                 Statement stm = conn.createStatement()) {
-            try {stm.executeUpdate("DROP TABLE foodmenu");} catch (SQLException ex) {}         
+            try {stm.executeUpdate("DROP TABLE foodmenu");} catch (SQLException ex) {}       
+             try {stm.executeUpdate("DROP TABLE customers");} catch (SQLException ex) {}   
            
             
             try {stm.executeUpdate("CREATE TABLE foodmenu (food_id INT NOT NULL, food_name VARCHAR(200),food_price INT NOT NULL,PRIMARY KEY (food_id))");} catch (SQLException ex) {} 
+             try {stm.executeUpdate("CREATE TABLE customers (cus_id INT NOT NULL, cus_name VARCHAR(200),cus_phone VARCHAR(100) ,PRIMARY KEY (cus_id))");} catch (SQLException ex) {} 
         }catch (Exception ex) {
             System.out.println(ex.getMessage()+" แก้ไขตามคำแนะนำด้านบน แล้ว Run ใหม่จนกว่าจะผ่าน");
         }

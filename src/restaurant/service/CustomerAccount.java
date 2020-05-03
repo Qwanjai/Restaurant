@@ -18,10 +18,10 @@ public class CustomerAccount {
     private Person person;
     public int  cusId;
 
-    public CustomerAccount(Location myLocation, AccountStatus status, Person person) {
+    public CustomerAccount(Location myLocation,  Person person) {
     
         this.myLocation = myLocation;
-        this.status = status;
+        this.status = AccountStatus.ACTIVE;
         this.person = person;
         this.cusId=generateCusId();
     }
@@ -29,10 +29,15 @@ public class CustomerAccount {
     
     
       private int generateCusId(){
-        String id;
-        id = "100"+String.valueOf(Person.getCountPerson());
-        return Integer.parseInt(id);
+        String idString;
+        idString = "100"+String.valueOf(Person.getCountPerson());
+        int idInt = Integer.parseInt(idString);
+        return  idInt;
        
+    }
+
+    public int getCusId() {
+        return cusId;
     }
 
 
@@ -48,10 +53,7 @@ public class CustomerAccount {
             return false;
         }
         final CustomerAccount other = (CustomerAccount) obj;
-        if (!Objects.equals(this.myLocation, other.myLocation)) {
-            return false;
-        }
-        if (!Objects.equals(this.person, other.person)) {
+        if (!Objects.equals(this.cusId, other.cusId)) {
             return false;
         }
         return true;
@@ -68,7 +70,7 @@ public class CustomerAccount {
     @Override
     public String toString() {
 
-        return "myLocation=" + myLocation + ", status=" + status + ", person=" + person + cusId;
+        return person+""+ myLocation + " status: " + status;
     }
 
 }

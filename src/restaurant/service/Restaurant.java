@@ -69,23 +69,30 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
 //             }
 //        }
     }
-        
-//        for (int i = 0; i < food.length; i++) {
-//            foodMenu[i] = food[i];
-//        }
-//        if (foodMenu == null) {
-//            System.out.println("false");
-//        }
-//    }
+    
+    public void showFoodMenu(int foodType){
+        switch (foodType) {
+            case 1:
+                for (int i = 0; i < 10; i++) {
+                    System.out.println(foodmenu[i]);
+                }
+                break;
+                  case 2:
+                for (int i = 10; i < 30; i++) {
+                    System.out.println(foodmenu[i]);
+                }
+                break;
+                  case 3:
+                for (int i = 30; i < foodmenu.length; i++) {
+                    System.out.println(foodmenu[i]);
+                }
+                break;
+            default:
+                throw new AssertionError();
+        }
+        }
 
-//    @Override
-//    public void sendOrderToCustomer(Order order) {
-//            for (int i = 0; i < this.order.length; i++) {
-//            this.order[i]
-//        }
-//        
-//
-//    }
+    
     @Override
     public boolean addItemIntoBasket(CustomerAccount customer, int foodId) {
         int foodIndex = findForFoodId(foodId);
@@ -93,10 +100,6 @@ public class Restaurant implements RestaurantService, CustomerService, PolicyOrd
         int orderIndex = findForWhoseOrder(customer);
 //        System.out.println(orderIndex);
         if (foodIndex > -1) {
-//             if (order[orderIndex].getFoodCounter()> PolicyOrdering.MAX_ORDER_PER_CUSTOMER) {
-//                System.out.println("Cannot add to your order , please delete some");
-//                return false;
-//            }
             if (orderIndex > -1) {
                 order[orderIndex].addItemIntoBasket(foodmenu[foodIndex]);
 //                System.out.println("Add item success");

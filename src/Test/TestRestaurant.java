@@ -22,7 +22,7 @@ import restaurant.policy.PolicyOrdering;
 import restaurant.service.Order;
 import utility.ConsoleText;
 
-public class Restaurantservice {
+public class TestRestaurant {
     
     Scanner sc = new Scanner(System.in);
     private Location resLocation;   
@@ -48,7 +48,7 @@ public class Restaurantservice {
             str.append('\n');
             str.append("》"+ ConsoleText.GREEN + " yes " + ConsoleText.BLACK + "if you registed        (sign in with id)");
             str.append("\n"+"》" + ConsoleText.BLUE+ " no " + ConsoleText.BLACK + "if you didn't registed   (sign up now)");
-            str.append("\n"+"》"+ConsoleText.RED + " type 0 to exit");
+            str.append("\n"+"》"+ConsoleText.RED + " type 0 to exit"+ ConsoleText.BLACK );
             System.out.println(str);
             textInput = sc.nextLine();
             switch (textInput) {
@@ -86,11 +86,13 @@ public class Restaurantservice {
         longtitude = sc.nextDouble();
         sc.nextLine();
         Location r_p1 = new Location(address, latitude, longtitude);
-        cusCounter++;
-        for (int i = 1; i < c.length; i++) {
-            c[i] = new CustomerAccount(r_p1, p1);
-        }
+        c[cusCounter] = new CustomerAccount(r_p1, p1);
+//        cusCounter++;
+//        for (int i = 1; i < c.length; i++) {
+//            c[i] = new CustomerAccount(r_p1, p1);
+//        }
         System.out.println(c[cusCounter].toString() + "  Customer id is : " + ConsoleText.BLUE + c[cusCounter].getCusId());
+        cusCounter++;
 //        System.out.print(ConsoleText.BLUE + c[dataCounter].getCusId());
 
 //         orderFood();
@@ -115,14 +117,13 @@ public class Restaurantservice {
         System.out.println("Hello "+c[cusIndex].getMyProfile().getName());
         int menuId;
         do {
-             System.out.println("|-----------------"+ConsoleText.RED+" Order  menu"+ConsoleText.BLACK+" -----------------|");
+             System.out.println(ConsoleText.BLACK+"|-----------------"+ConsoleText.RED+" Order  menu"+ConsoleText.BLACK+" -----------------|");
         System.out.println("(1) Show food menu ");
         System.out.println("(2) Add food to basket ");
         System.out.println("(3) Delete food from basket ");
         System.out.println("(4) See your orderlist ");
-        System.out.println("(5) Checkout ");
-        System.out.println("(6) Get your reciept");
-         System.out.println("(7) Exit out ");
+        System.out.println("(5) Checkout and get your reciept ");
+         System.out.println("(6) Exit out ");
         menuId = sc.nextInt();
         sc.nextLine();
         switch (menuId) {
@@ -142,14 +143,11 @@ public class Restaurantservice {
                 checkout();
                 break;
             case 6:
-                getBill();
-                break;
-            case 7:
                 break;
             default:
                 System.out.println("Please, try again");
         }
-        } while (menuId!=7);
+        } while (menuId!=6);
         
        
         
@@ -166,7 +164,7 @@ public class Restaurantservice {
     
     private int findForAccount(int id) {
         int accountindex = -1;
-        for (int i = 1; i < c.length; i++) {
+        for (int i = 0; i < c.length; i++) {
             if (c[i] != null && c[i].getCusId() == id) {
                 return i;
             }
@@ -175,7 +173,7 @@ public class Restaurantservice {
         return accountindex;
     }
     
-    public Restaurantservice() {
+    public TestRestaurant() {
         this.c = new CustomerAccount[PolicyOrdering.MAX_CUS];
     }
     
@@ -225,12 +223,9 @@ public class Restaurantservice {
         
     }
     
-    private void getBill() {
-        rs.getMyBill(c[cusIndex]);
-        
-    }
 
-    private void setValueOfRestaurant() throws ClassNotFoundException, SQLException {
+
+    private void setValueToRestaurant() throws ClassNotFoundException, SQLException {
         resLocation = new Location("SIT EATERY ", 13.652714, 100.493614);
         rs = new Restaurant("SIT EATERY", resLocation);        
         ArrayList<Food> foodList = null;
@@ -239,8 +234,8 @@ public class Restaurantservice {
     }
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Restaurantservice resNew = new Restaurantservice();
-        resNew.setValueOfRestaurant();
+        TestRestaurant resNew = new TestRestaurant();
+        resNew.setValueToRestaurant();
         resNew.welcomeMenu();
         
     }

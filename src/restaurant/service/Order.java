@@ -25,12 +25,17 @@ public class Order {
     private int foodFee;
     private int deliveryFee;
 
+
     public Order(CustomerAccount customer) {
         this.resLocate = Restaurant.resLc;
         this.customer = customer;
         this.orderlist = new Food[PolicyOrdering.MAX_ORDER_PER_CUSTOMER];
 
     }
+    
+    
+
+    
 
     public boolean addItemIntoBasket(Food food) {
         if (foodCounter == PolicyOrdering.MAX_ORDER_PER_CUSTOMER) {
@@ -78,6 +83,7 @@ public class Order {
         deliveryFee = distanceTo(resLocate, customer) * PolicyOrdering.FEE_PER_KILOMETER;
         totalFee = foodFee + deliveryFee;
         status = OrderStatus.FINISHED;
+        getBill();
 
     }
 
@@ -98,7 +104,7 @@ public class Order {
         return status;
     }
 
-    public Order getBill() {
+   private  Order getBill() {
         return this;
     }
 

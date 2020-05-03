@@ -15,8 +15,7 @@ public interface CustomerService {
     public boolean delItemFromBasket(CustomerAccount customer, int foodId);
 
     public boolean getMyOrderList(CustomerAccount customer);
-
-    public void getMyBill(CustomerAccount customer);
+ 
 
     public void checkoutItem(CustomerAccount customer);
 

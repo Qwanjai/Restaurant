@@ -66,9 +66,12 @@ public class Person {
 
     @Override
     public String toString() {
-        return  '{'+"Name=" + name + ", phone=" + phone + '}';
+        return  "Person : "+"name = "  + name + ", phone = " + phone ;
     }
-    
+    public static void main(String[] args) {
+        Person p = new Person("Jennie", "0854471459");
+        System.out.println(p);
+    }
     
     
     

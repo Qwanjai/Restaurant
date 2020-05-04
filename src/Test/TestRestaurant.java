@@ -27,7 +27,6 @@ public class TestRestaurant {
     Scanner sc = new Scanner(System.in);
     private Location resLocation;
     private Restaurant rs;
-    public int cusCounter;
     public CustomerAccount[] c;
     private int cusIndex;
 
@@ -73,7 +72,7 @@ public class TestRestaurant {
             str.append(ConsoleText.BLUE + " yes " + ConsoleText.BLACK + "or" + ConsoleText.RED + " no ");
 
             str.append('\n');
-            str.append("》" + ConsoleText.GREEN + " yes " + ConsoleText.BLACK + "if you registed        (sign in with id)"+ConsoleText.BLACK);
+            str.append("》" + ConsoleText.GREEN + " yes " + ConsoleText.BLACK + "if you registed        (sign in with id)" + ConsoleText.BLACK);
             str.append("\n" + "》" + ConsoleText.BLUE + " no " + ConsoleText.BLACK + "if you didn't registed   (sign up now)");
             str.append("\n" + "》" + ConsoleText.RED + " type 0 to exit" + ConsoleText.BLACK);
             System.out.println(str);
@@ -94,7 +93,7 @@ public class TestRestaurant {
     }
 
     private void register() throws ClassNotFoundException, SQLException {
-        
+
         String name;
         String phone;
         String address;
@@ -114,17 +113,12 @@ public class TestRestaurant {
         longtitude = sc.nextDouble();
         sc.nextLine();
         Location r_p1 = new Location(address, latitude, longtitude);
-//        c[cusCounter] = new CustomerAccount(r_p1, p1);
         CustomerAccount cTemp = new CustomerAccount(r_p1, p1);
-//        cusImp = new CustomerDBImp();
         cusImp.insert(cTemp);
         System.out.println(cTemp.toString());
-//        cusCounter++;
-//        System.out.print(ConsoleText.BLUE + c[dataCounter].getCusId());
         addCustomerlistToArray(getCustomers());
         cusIndex = findForAccount(cTemp.getCusId());
-
-         orderFood();
+        orderFood();
     }
 
     private boolean signIn() {
@@ -133,7 +127,7 @@ public class TestRestaurant {
         System.out.print("Enter your customer id :");
         id = sc.nextInt();
         sc.nextLine();
-        cusIndex = findForAccount(id) ;
+        cusIndex = findForAccount(id);
         if (cusIndex == -1) {
             return false;
         }
@@ -198,10 +192,6 @@ public class TestRestaurant {
         }
         System.out.println(ConsoleText.RED + "Account not found");
         return accountindex;
-    }
-
-    public TestRestaurant() {
-        this.c = new CustomerAccount[PolicyOrdering.MAX_CUS];
     }
 
     private boolean addFoodIntoBasket() {
@@ -291,12 +281,13 @@ public class TestRestaurant {
     }
 
     private void searchByName() {
-         System.out.print("customer name : ");
+        System.out.print("customer name : ");
         String name = sc.nextLine();
         System.out.println(cusImp.findByName(name));
 
     }
-     private  ArrayList<CustomerAccount> getCustomers() throws ClassNotFoundException, SQLException { //move to Restaurant to store customer data 
+
+    private ArrayList<CustomerAccount> getCustomers() throws ClassNotFoundException, SQLException { //move to Restaurant to store customer data 
         Connection conn = DBConnection.getConnection();
         Statement stm;
         stm = conn.createStatement();
@@ -311,12 +302,12 @@ public class TestRestaurant {
         return cuslist;
     }
 
-    private  void addCustomerlistToArray(ArrayList<CustomerAccount> cust) { //move to Restaurant to store customer data 
-        c= new CustomerAccount[cust.size()];
+    private void addCustomerlistToArray(ArrayList<CustomerAccount> cust) { //move to Restaurant to store customer data 
+        c = new CustomerAccount[cust.size()];
         for (int i = 0; i < cust.size(); i++) {
             c[i] = cust.get(i);
         }
-        if (c== null) {
+        if (c == null) {
             System.out.println("add customerlist to array false");
         }
 //        if (custA != null) {
@@ -333,15 +324,16 @@ public class TestRestaurant {
         ArrayList<Food> foodList = null;
         foodList = rs.getFoods();
         rs.addFoodMenu(foodList);
-//         ArrayList<CustomerAccount> custList = null;
-//        custList = rs.getCustomers();
-//        rs.addCustomerlistToArray(custList);
+    }
+
+    public TestRestaurant() {
+        this.c = new CustomerAccount[PolicyOrdering.MAX_CUS];
     }
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         TestRestaurant resNew = new TestRestaurant();
         resNew.setValueToRestaurant();
-         ArrayList<CustomerAccount> custList = null;
+        ArrayList<CustomerAccount> custList = null;
         custList = resNew.getCustomers();
         resNew.addCustomerlistToArray(custList);
         resNew.welcomeMenu();

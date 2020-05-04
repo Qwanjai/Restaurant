@@ -56,37 +56,6 @@ public class CustomerDBImp implements CustomerDB {
  return cust ;
     }
 
-    public ArrayList<CustomerAccount> getCustomers() throws ClassNotFoundException, SQLException { //move to Restaurant to store customer data 
-        Connection conn = DBConnection.getConnection();
-        Statement stm;
-        stm = conn.createStatement();
-        String sql = "Select * From customers";
-        ResultSet rst;
-        rst = stm.executeQuery(sql);
-        ArrayList<CustomerAccount> cuslist = new ArrayList<>();
-        while (rst.next()) {
-//            CustomerAccount cust = new CustomerAccount(rst.getInt("cus_id"),rst.getObject("Person"));
-            CustomerAccount cust = new CustomerAccount(rst.getInt("cus_id"), new Person(rst.getString("cus_name"), rst.getString("cus_phone")), new Location(rst.getString("cus_address"), rst.getDouble("latitude"), rst.getDouble("longitude")));
-            cuslist.add(cust);
-        }
-        return cuslist;
-    }
-
-    public void addCustomerlistToArray(ArrayList<CustomerAccount> cust) { //move to Restaurant to store customer data 
-        custA = new CustomerAccount[cust.size()];
-        for (int i = 0; i < cust.size(); i++) {
-            custA[i] = cust.get(i);
-        }
-        if (custA == null) {
-            System.out.println("add customerlist to array false");
-        }
-//        if (custA != null) {
-//            for (int i = 0; i < custA.length; i++) {
-//                System.out.println(custA[i].toString());
-//            }
-//        }
-    }
-
     @Override
     public ArrayList<CustomerAccount> findByName(String name) {
         ArrayList<CustomerAccount> custList = new ArrayList<>();
@@ -131,12 +100,5 @@ public class CustomerDBImp implements CustomerDB {
 //
 //    }
 
-    @Override
-    public int update(CustomerAccount customer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
    
-    
-    
-    
-    }
 }

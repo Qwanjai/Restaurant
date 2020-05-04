@@ -144,7 +144,8 @@ public class Order {
     public int getDeliveryFee() {
         return deliveryFee;
     }
-
+// this method was written by เอชttps://introcs.cs.princeton.edu/java/44st/Location.java.html
+    
     private int distanceTo(Location resLocate, CustomerAccount customer) {
         double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
         double lat1 = Math.toRadians(resLocate.getLatitude());

@@ -12,8 +12,7 @@ import restaurant.service.Restaurant;
 public interface CustomerDB {
 
     public void insert(CustomerAccount customer);
-      int update(CustomerAccount customer);
-
+ 
     public CustomerAccount findById(int id);
 
     public ArrayList<CustomerAccount> findByName(String name);

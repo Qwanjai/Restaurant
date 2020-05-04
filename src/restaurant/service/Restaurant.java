@@ -19,20 +19,20 @@ import restaurant.policy.PolicyOrdering;
 import restaurant.service.CustomerAccount;
 import restaurant.service.CustomerService;
 import restaurant.service.Order;
+import utility.ConsoleText;
 
 public class Restaurant implements CustomerService, PolicyOrdering {
 
-    private String restaurantName;
     public Food[] foodmenu;
     public static Location resLc;
+    private String restaurantName;
     private Order order[];
     private CustomerAccount customers[];
-//    public Comparator<Location> locationComparator;
     private int foodCounter;
     private int orderCounter;
     private int nOrderForId = 0;
     private int orderId;
-    private int customerCounter;
+
 
     public Restaurant(String restaurantName, Location resLc) {
         this.restaurantName = restaurantName;
@@ -94,7 +94,7 @@ public class Restaurant implements CustomerService, PolicyOrdering {
                 throw new AssertionError();
         }
     }
-       
+
     @Override
     public boolean addItemIntoBasket(CustomerAccount customer, int foodId) {
         int foodIndex = findForFoodId(foodId);
@@ -140,6 +140,7 @@ public class Restaurant implements CustomerService, PolicyOrdering {
 
     }
 //
+
     private boolean clearOrder(CustomerAccount customer) {
         int orderIndex = findForWhoseOrder(customer);
         if (orderIndex > -1) {
@@ -178,14 +179,13 @@ public class Restaurant implements CustomerService, PolicyOrdering {
         StringBuilder sb2 = new StringBuilder();
         StringBuilder sb = new StringBuilder();
         if (orderIndex > -1) {
-
             sb2.append("   " + customer.getMyProfile().getName());
             sb2.append("   | Order number : " + generateOrderId());
             System.out.println(sb2);
             order[orderIndex].getOrderList2();
-            sb.append("Yout total fee:");
+            sb.append("Yout total fee: ");
             sb.append(order[orderIndex].getTotalFee());
-            sb.append("   ,Food fee: ");
+            sb.append("   , Food fee: ");
             sb.append(order[orderIndex].getFoodFee());
             sb.append(", Delivery fee: ");
             sb.append(order[orderIndex].getDeliveryFee());
@@ -193,7 +193,7 @@ public class Restaurant implements CustomerService, PolicyOrdering {
             sb.append("Thank you, have a nice day");
             System.out.println(sb);
         } else {
-            System.out.println("You don't have any order to be found  ");
+            System.out.println(ConsoleText.RED+"You don't have any order to be found  "+ConsoleText.BLACK);
         }
 
     }

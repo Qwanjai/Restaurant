@@ -22,6 +22,10 @@ public class Location {
         this.longitude = 0;
       }     
 
+    public String getAddress() {
+        return address;
+    }
+
     public double getLatitude() {
         return latitude;
     }

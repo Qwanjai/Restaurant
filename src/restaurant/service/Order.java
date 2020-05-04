@@ -32,17 +32,11 @@ public class Order {
         this.orderlist = new Food[PolicyOrdering.MAX_ORDER_PER_CUSTOMER];
 
     }
-    
-    
-
-    
-
     public boolean addItemIntoBasket(Food food) {
         if (foodCounter == PolicyOrdering.MAX_ORDER_PER_CUSTOMER) {
             
             return false;
         }
-
         orderlist[foodCounter] = food;
         foodCounter++;
         status = OrderStatus.ORDERING;
@@ -60,7 +54,6 @@ public class Order {
                 }
             }
             foodCounter--;
-          
             status = OrderStatus.ORDERING;
             return true;
         }

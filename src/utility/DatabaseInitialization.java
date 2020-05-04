@@ -34,14 +34,14 @@ public class DatabaseInitialization {
            try {stm.executeUpdate("DROP TABLE customers");} catch (SQLException ex) {}   
            try {stm.executeUpdate("DROP TABLE orders");} catch (SQLException ex) {}   
             
-            try {stm.executeUpdate("CREATE TABLE foodmenu (food_id INT NOT NULL, food_name VARCHAR(200),food_price INT NOT NULL,PRIMARY KEY (food_id))");} catch (SQLException ex) {} 
-            try {stm.executeUpdate("CREATE TABLE customers (cus_id INT NOT NULL, cus_name VARCHAR(200),cus_phone VARCHAR(100) ,PRIMARY KEY (cus_id))");} catch (SQLException ex) {} 
+        //    try {stm.executeUpdate("CREATE TABLE foodmenu (food_id INT NOT NULL, food_name VARCHAR(200),food_price INT NOT NULL,PRIMARY KEY (food_id))");} catch (SQLException ex) {} 
+            try {stm.executeUpdate("CREATE TABLE customers (cus_id INT NOT NULL,cus_name VARCHAR(200),cus_phone VARCHAR(100),cus_address VARCHAR(200),latitude DECIMAL(10,7),longitude DECIMAL(10,7),PRIMARY KEY (cus_id))");} catch (SQLException ex) {} 
             try {stm.executeUpdate("CREATE TABLE orders (ordernumber INT NOT NULL, food_id INT NOT NULL ,cus_id INT NOT NULL ,PRIMARY KEY (ordernumber,food_id))");} catch (SQLException ex) {} 
         }catch (Exception ex) {
             System.out.println(ex.getMessage()+" Go to Service which located to your left top side and Connect");
         }
     }
-
+//,cus_address VARCHAR(200))
     private static void initializeDb(boolean show) {
        String sqlFoodmenu="INSERT INTO foodmenu VALUES(?,?,?)";
         try(Connection conn = DBConnection.getConnection();

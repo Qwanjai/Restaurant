@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import restaurant.location.Location;
 import restaurant.menu.Food;
+import restaurant.person.Person;
 import restaurant.policy.PolicyOrdering;
 import restaurant.service.CustomerAccount;
 import restaurant.service.CustomerService;
@@ -93,7 +94,7 @@ public class Restaurant implements CustomerService, PolicyOrdering {
                 throw new AssertionError();
         }
     }
-
+       
     @Override
     public boolean addItemIntoBasket(CustomerAccount customer, int foodId) {
         int foodIndex = findForFoodId(foodId);
@@ -138,7 +139,7 @@ public class Restaurant implements CustomerService, PolicyOrdering {
         }
 
     }
-
+//
     private boolean clearOrder(CustomerAccount customer) {
         int orderIndex = findForWhoseOrder(customer);
         if (orderIndex > -1) {

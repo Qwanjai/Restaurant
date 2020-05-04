@@ -9,6 +9,7 @@ import java.util.Objects;
 import restaurant.location.Location;
 import restaurant.person.AccountStatus;
 import restaurant.person.Person;
+import utility.ConsoleText;
 
 
 public class CustomerAccount {
@@ -19,15 +20,17 @@ public class CustomerAccount {
     public int  cusId;
 
     public CustomerAccount(Location myLocation,  Person person) {
-    
         this.myLocation = myLocation;
-        this.status = AccountStatus.ACTIVE;
         this.person = person;
         this.cusId=generateCusId();
     }
-  
-    
-    
+
+    public CustomerAccount(int cusId ,Person person,Location myLocation ) {
+        this.myLocation = myLocation;
+        this.person = person;
+        this.cusId = cusId;
+    }
+
       private int generateCusId(){
         String idString;
         idString = "100"+String.valueOf(Person.getCountPerson());
@@ -70,7 +73,7 @@ public class CustomerAccount {
     @Override
     public String toString() {
 
-        return person+""+ myLocation + " status: " + status;
+        return person+""+ myLocation + ConsoleText.BLUE+ " |   customer id is : "+cusId;
     }
 
 }

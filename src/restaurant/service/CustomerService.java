@@ -16,7 +16,6 @@ public interface CustomerService {
 
     public boolean getMyOrderList(CustomerAccount customer);
  
-
     public void checkoutItem(CustomerAccount customer);
 
 }

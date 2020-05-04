@@ -60,6 +60,7 @@ public class Order {
                 }
             }
             foodCounter--;
+          
             status = OrderStatus.ORDERING;
             return true;
         }
@@ -77,6 +78,7 @@ public class Order {
     }
 
     public void checkoutItem() {
+        foodFee = 0;
         for (int i = 0; i < foodCounter; i++) {
             foodFee += orderlist[i].getPrice();
         }
@@ -92,9 +94,17 @@ public class Order {
     }
 
     public void getOrderList() {
+        foodFee = 0;
         for (int i = 0; i < foodCounter; i++) {
             System.out.println(orderlist[i]);
             foodFee += orderlist[i].getPrice();
+        }
+        status=OrderStatus.ORDERING;
+        
+    }
+    public void getOrderList2() {
+        for (int i = 0; i < foodCounter; i++) {
+            System.out.println(orderlist[i]);           
         }
         status=OrderStatus.ORDERING;
         

@@ -103,13 +103,11 @@ public class Restaurant implements CustomerService, PolicyOrdering {
         if (foodIndex > -1) {
             if (orderIndex > -1) {
                 order[orderIndex].addItemIntoBasket(foodmenu[foodIndex]);
-//                System.out.println("Add item success");
                 return true;
             } else {
                 order[orderCounter++] = new Order(customer);
                 order[orderCounter - 1].addItemIntoBasket(foodmenu[foodIndex]);
                 nOrderForId++;
-//                System.out.println("Add item success");
                 return true;
             }
         }
@@ -121,11 +119,8 @@ public class Restaurant implements CustomerService, PolicyOrdering {
         int foodIndex = findForFoodId(foodId);
         int orderIndex = findForWhoseOrder(customer);
         if (foodIndex > -1) {
-
             if (orderIndex > -1) {
-                System.out.println(order[orderIndex].delItemFromBasket(foodmenu[foodIndex]));
-//                order[orderIndex].delItemFromBasket(foodMenu[foodIndex]);
-//                System.out.println("Delete success");
+                order[orderIndex].delItemFromBasket(foodmenu[foodIndex]);
                 return true;
             }
         }
@@ -141,13 +136,6 @@ public class Restaurant implements CustomerService, PolicyOrdering {
             getMyBill(customer);
             clearOrder(customer);
         }
-
-    }
-
-    private int generateOrderId() {
-        String orderIdS = "200" + String.valueOf(nOrderForId);
-        orderId = Integer.parseInt(orderIdS);
-        return orderId;
 
     }
 
@@ -168,10 +156,6 @@ public class Restaurant implements CustomerService, PolicyOrdering {
         return false;
     }
 
-    public int getnOrderForId() {
-        return nOrderForId;
-    }
-
     @Override
     public boolean getMyOrderList(CustomerAccount customer) {
         int orderIndex = findForWhoseOrder(customer);
@@ -187,17 +171,17 @@ public class Restaurant implements CustomerService, PolicyOrdering {
         }
         return false;
     }
-    
-   private  void getMyBill(CustomerAccount customer) {
+
+    private void getMyBill(CustomerAccount customer) {
         int orderIndex = findForWhoseOrder(customer);
         StringBuilder sb2 = new StringBuilder();
         StringBuilder sb = new StringBuilder();
         if (orderIndex > -1) {
-            
-            sb2.append("   "+customer.getMyProfile().getName());
-            sb2.append("   | Order number : "+generateOrderId());
+
+            sb2.append("   " + customer.getMyProfile().getName());
+            sb2.append("   | Order number : " + generateOrderId());
             System.out.println(sb2);
-          order[orderIndex].getOrderList();
+            order[orderIndex].getOrderList2();
             sb.append("Yout total fee:");
             sb.append(order[orderIndex].getTotalFee());
             sb.append("   ,Food fee: ");
@@ -237,6 +221,17 @@ public class Restaurant implements CustomerService, PolicyOrdering {
             }
         }
         return -1;
+    }
+
+    private int generateOrderId() {
+        String orderIdS = "200" + String.valueOf(nOrderForId);
+        orderId = Integer.parseInt(orderIdS);
+        return orderId;
+
+    }
+
+    public int getnOrderForId() {
+        return nOrderForId;
     }
 
     @Override

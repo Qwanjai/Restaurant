@@ -5,6 +5,8 @@
  */
 package Test;
 
+import dataaccess.CustomerDB;
+import dataaccess.CustomerDBImp;
 import dataaccess.DBConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,15 +25,12 @@ import restaurant.service.Order;
 import utility.ConsoleText;
 
 public class TestRestaurant {
-    
+     private CustomerDBImp  cusImp;
     Scanner sc = new Scanner(System.in);
     private Location resLocation;   
     private  Restaurant rs;
-    private static int personCounter;
     public int cusCounter;
-
     public  CustomerAccount[] c;
-    private Order o_c;
     private int cusIndex;
     
     public void welcomeMenu() {
@@ -87,10 +86,8 @@ public class TestRestaurant {
         sc.nextLine();
         Location r_p1 = new Location(address, latitude, longtitude);
         c[cusCounter] = new CustomerAccount(r_p1, p1);
-//        cusCounter++;
-//        for (int i = 1; i < c.length; i++) {
-//            c[i] = new CustomerAccount(r_p1, p1);
-//        }
+//        cusImp = new CustomerDBImp();
+//        cusImp.insert(c[cusCounter]);
         System.out.println(c[cusCounter].toString() + "  Customer id is : " + ConsoleText.BLUE + c[cusCounter].getCusId());
         cusCounter++;
 //        System.out.print(ConsoleText.BLUE + c[dataCounter].getCusId());
@@ -159,7 +156,7 @@ public class TestRestaurant {
         System.out.print("Enter (1-3) to see the menu : ");
         menu = sc.nextInt();
         rs.showFoodMenu(menu);
-        System.out.println("----------------------------------------------------");
+        System.out.println("-------------------------------------------------");
     }
     
     private int findForAccount(int id) {

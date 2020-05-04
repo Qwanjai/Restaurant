@@ -30,7 +30,7 @@ public class DatabaseInitialization {
     private static void createTables() {
         try (Connection conn = DBConnection.getConnection();
                 Statement stm = conn.createStatement()) {
-           try {stm.executeUpdate("DROP TABLE foodmenu");} catch (SQLException ex) {}       
+//           try {stm.executeUpdate("DROP TABLE foodmenu");} catch (SQLException ex) {}       
            try {stm.executeUpdate("DROP TABLE customers");} catch (SQLException ex) {}   
            try {stm.executeUpdate("DROP TABLE orders");} catch (SQLException ex) {}   
             

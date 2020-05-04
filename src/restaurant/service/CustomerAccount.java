@@ -34,6 +34,12 @@ public class CustomerAccount {
         int idInt = Integer.parseInt(idString);
         return  idInt;
        
+    } public Person getMyProfile() {
+        return person;
+    }
+
+    public Location getMyLocation() {
+        return myLocation;
     }
 
     public int getCusId() {
@@ -59,13 +65,7 @@ public class CustomerAccount {
         return true;
     }
 
-    public Person getMyProfile() {
-        return person;
-    }
-
-    public Location getMyLocation() {
-        return myLocation;
-    }
+   
 
     @Override
     public String toString() {

@@ -73,7 +73,7 @@ public class CustomerAccount {
     @Override
     public String toString() {
 
-        return person+ConsoleText.BLUE+"     customer id is : "+cusId+ConsoleText.BLACK+"\n"+ myLocation +"";
+        return  "  "+person+ConsoleText.BLUE+"     customer id is : "+cusId+ConsoleText.BLACK+myLocation +"\n";
     }
 
 }

@@ -36,7 +36,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location : " + "address = " + address + " , latitude = " + latitude + " , longitude = " + longitude ;
+        return " |  Location : " + "address = " + address + " , latitude = " + latitude + " , longitude = " + longitude ;
     }
      
 }

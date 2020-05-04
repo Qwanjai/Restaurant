@@ -64,18 +64,17 @@ public class TestRestaurant {
         String textInput;
         do {
             StringBuilder str = new StringBuilder();
-            str.append("-------------------------------------------------" + '\n');
-            str.append("\t" + ConsoleText.BLACK + "      WELCOME TO");
-            str.append(ConsoleText.RED + " SIT EATERY " + '\n');
-            str.append(ConsoleText.BLACK + "-------------------------------------------------" + '\n');
-            str.append("have you ever registed in this restaurant ?".toUpperCase());
-            str.append(ConsoleText.BLUE + " yes " + ConsoleText.BLACK + "or" + ConsoleText.RED + " no ");
+            str.append("-------------------------------------------------");
+            str.append('\n' + ConsoleText.RED_UNDERLINED + "\t" + "      Customer  menu".toUpperCase() + ConsoleText.BLACK);
+            str.append('\n'+"have you ever registed in this restaurant ?".toUpperCase());
+            str.append(ConsoleText.BLUE + " yes " + ConsoleText.BLACK + "or" + ConsoleText.RED + " no " + ConsoleText.BLACK);
 
             str.append('\n');
             str.append("》" + ConsoleText.GREEN + " yes " + ConsoleText.BLACK + "if you registed        (sign in with id)" + ConsoleText.BLACK);
             str.append("\n" + "》" + ConsoleText.BLUE + " no " + ConsoleText.BLACK + "if you didn't registed   (sign up now)");
-            str.append("\n" + "》" + ConsoleText.RED + " type 0 to exit" + ConsoleText.BLACK);
-            System.out.println(str);
+            str.append("\n" + "》" + ConsoleText.RED + " type 0 to exit" + ConsoleText.BLACK+'\n');
+            str.append("Type here  :");
+            System.out.print(str);
             textInput = sc.nextLine();
             switch (textInput) {
                 case "yes":
@@ -236,7 +235,7 @@ public class TestRestaurant {
         do {
             StringBuilder str = new StringBuilder();
             str.append(ConsoleText.BLACK + "-------------------------------------------------");
-            str.append('\n' + ConsoleText.RED + "\t" + "      Owner  menu".toUpperCase() + ConsoleText.BLACK);
+            str.append('\n' + ConsoleText.RED_UNDERLINED + "\t" + "      Owner  menu".toUpperCase() + ConsoleText.BLACK);
             str.append('\n' + ConsoleText.BLUE + " (1) : Show all customer data  " + '\n');
             str.append(ConsoleText.BLACK + " (2) : Find customer  by id " + '\n');
             str.append(" (3) : Find customer by name " + '\n' + ConsoleText.BLACK);

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package utility;
+package dataaccess;
 
 import dataaccess.DBConnection;
 import java.io.*;
@@ -26,7 +26,7 @@ public class DatabaseInitialization {
         try (Connection conn = DBConnection.getConnection();
                 Statement stm = conn.createStatement()) {
 //           try {stm.executeUpdate("DROP TABLE foodmenu");} catch (SQLException ex) {}       
-           try {stm.executeUpdate("DROP TABLE customers");} catch (SQLException ex) {}   
+//           try {stm.executeUpdate("DROP TABLE customers");} catch (SQLException ex) {}   
 
             
         //    try {stm.executeUpdate("CREATE TABLE foodmenu (food_id INT NOT NULL, food_name VARCHAR(200),food_price INT NOT NULL,PRIMARY KEY (food_id))");} catch (SQLException ex) {} 

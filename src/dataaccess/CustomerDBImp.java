@@ -19,7 +19,7 @@ import restaurant.service.CustomerAccount;
 
 public class CustomerDBImp implements CustomerDB {
 
-    static CustomerAccount custA[];
+//    static CustomerAccount custA[];
 
     @Override
     public void insert(CustomerAccount customer) {

@@ -17,7 +17,7 @@ public class Location {
         this.longitude = longitude;
     }
       public void  clearCoordinates(){
-          this.address = null;
+        this.address = null;
         this.latitude = 0;
         this.longitude = 0;
       }     

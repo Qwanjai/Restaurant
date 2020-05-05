@@ -69,7 +69,6 @@ public class TestRestaurant {
             str.append('\n' + ConsoleText.RED_UNDERLINED + "\t" + "      Customer  menu".toUpperCase() + ConsoleText.BLACK);
             str.append('\n'+"have you ever registed in this restaurant ?".toUpperCase());
             str.append(ConsoleText.BLUE + " yes " + ConsoleText.BLACK + "or" + ConsoleText.RED + " no " + ConsoleText.BLACK);
-
             str.append('\n');
             str.append("》" + ConsoleText.GREEN + " yes " + ConsoleText.BLACK + "if you registed        (sign in with id)" + ConsoleText.BLACK);
             str.append("\n" + "》" + ConsoleText.BLUE + " no " + ConsoleText.BLACK + "if you didn't registed   (sign up now)");
@@ -93,7 +92,6 @@ public class TestRestaurant {
     }
 
     private void register() throws ClassNotFoundException, SQLException {
-
         String name;
         String phone;
         String address;
@@ -287,7 +285,7 @@ public class TestRestaurant {
 
     }
 
-    private ArrayList<CustomerAccount> getCustomers() throws ClassNotFoundException, SQLException { //move to Restaurant to store customer data 
+    private ArrayList<CustomerAccount> getCustomers() throws ClassNotFoundException, SQLException {
         Connection conn = DBConnection.getConnection();
         Statement stm;
         stm = conn.createStatement();
@@ -302,7 +300,7 @@ public class TestRestaurant {
         return cuslist;
     }
 
-    private void addCustomerlistToArray(ArrayList<CustomerAccount> cust) { //move to Restaurant to store customer data 
+    private void addCustomerlistToArray(ArrayList<CustomerAccount> cust) { 
         c = new CustomerAccount[cust.size()];
         for (int i = 0; i < cust.size(); i++) {
             c[i] = cust.get(i);

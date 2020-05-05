@@ -114,6 +114,7 @@ public class TestRestaurant {
         CustomerAccount cTemp = new CustomerAccount(r_p1, p1);
         cusImp.insert(cTemp);
         System.out.println(cTemp.toString());
+        Person.countPerson = 0;
         addCustomerlistToArray(getCustomers());
         cusIndex = findForAccount(cTemp.getCusId());
         orderFood();
@@ -268,6 +269,7 @@ public class TestRestaurant {
     }
 
     private void getAllCustomer() {
+        Person.countPerson = 0;
         System.out.println(cusImp.getAll());
     }
 

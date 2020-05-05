@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Person {
     private String name;
     private String phone;
-    private  static int countPerson;
+    public  static int countPerson;
     private static int  id;
     public Person(String name, String phone) {
         this.name = name;

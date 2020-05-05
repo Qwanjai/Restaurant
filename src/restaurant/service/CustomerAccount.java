@@ -30,7 +30,7 @@ public class CustomerAccount {
         this.person = person;
         this.cusId = cusId;
     }
-
+    
       private int generateCusId(){
         String idString;
         idString = "100"+String.valueOf(Person.getCountPerson());

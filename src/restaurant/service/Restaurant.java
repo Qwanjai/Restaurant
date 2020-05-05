@@ -76,12 +76,12 @@ public class Restaurant implements CustomerService, PolicyOrdering {
     public void showFoodMenu(int foodType) {
         switch (foodType) {
             case 1:
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i <= 9; i++) {
                     System.out.println(foodmenu[i]);
                 }
                 break;
             case 2:
-                for (int i = 10; i < 30; i++) {
+                for (int i = 10; i <= 29; i++) {
                     System.out.println(foodmenu[i]);
                 }
                 break;

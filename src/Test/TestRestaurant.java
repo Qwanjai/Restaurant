@@ -136,7 +136,7 @@ public class TestRestaurant {
     }
 
     private void orderFood() {
-        System.out.println("Hello " + c[cusIndex].getMyProfile().getName());
+        System.out.println("   Hello " + c[cusIndex].getMyProfile().getName()+"   "+", What would you want to do ?");
         int menuId;
         do {
             System.out.println(ConsoleText.BLACK + "|-----------------" + ConsoleText.RED + " Order  menu" + ConsoleText.BLACK + " -----------------|");
@@ -146,6 +146,7 @@ public class TestRestaurant {
             System.out.println("(4) See your orderlist ");
             System.out.println("(5) Checkout and get your reciept ");
             System.out.println("(6) Exit out ");
+            System.out.print("Type 1 - 6 here :");
             menuId = sc.nextInt();
             sc.nextLine();
             switch (menuId) {

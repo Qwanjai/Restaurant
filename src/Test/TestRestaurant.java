@@ -34,6 +34,7 @@ public class TestRestaurant {
         String textInput;
         do {
             StringBuilder str = new StringBuilder();
+            str.append("\n");
             str.append("-------------------------------------------------" + '\n');
             str.append("\t" + ConsoleText.BLACK + "      WELCOME TO");
             str.append(ConsoleText.RED + " SIT EATERY " + '\n');
